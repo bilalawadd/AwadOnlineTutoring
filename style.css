@@ -1,0 +1,175 @@
+/* ===== Theme Variables ===== */
+:root{
+  --primary:#059669;      /* Teal Emerald (brand) */
+  --primary-dark:#047857; /* Deeper teal */
+  --accent:#fb923c;       /* Tangerine CTA */
+  --accent-dark:#f97316;  /* Tangerine hover */
+  --text:#0f172a;         /* Slate */
+  --bg:#f8fafc;           /* Page background */
+  --surface:#ffffff;      /* Cards / sections */
+  --soft:#f6fffd;         /* Extra-light mint tint */
+  --shadow:0 3px 12px rgba(15, 23, 42, 0.08);
+}
+
+/* ===== Base ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);line-height:1.6;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+html{scroll-behavior:smooth}
+
+/* ===== Header / Navbar ===== */
+.header{position:sticky;top:0;z-index:50;transition:all .25s ease}
+.header.scrolled{backdrop-filter:saturate(140%) blur(6px)}
+.navbar{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--primary);padding:14px 20px;box-shadow:var(--shadow);transition:padding .2s ease
+}
+.header.scrolled .navbar{padding:8px 20px}
+.logo{color:#fff;font-size:1.25rem;font-weight:700;letter-spacing:.5px}
+
+.nav-links{list-style:none;display:flex;gap:22px;align-items:center}
+.nav-links a{color:#fff;text-decoration:none;font-weight:500;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+
+/* Hamburger (mobile) */
+.hamburger{display:none;width:42px;height:42px;border:0;background:transparent;cursor:pointer}
+.hamburger span{display:block;height:2px;background:#fff;margin:8px 0;transition:.2s}
+.hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+
+/* ===== Hero ===== */
+.hero{
+  background:
+    linear-gradient(rgba(5,150,105,.78), rgba(5,150,105,.78)),
+    url('hero-bg.jpg') center/cover no-repeat;
+  color:#fff;min-height:85vh;display:flex;justify-content:center;align-items:center;
+  text-align:center;padding:0 20px
+}
+.hero-content h1.hero-title{
+  font-size:2.6rem;font-weight:800;margin-bottom:12px;line-height:1.2;
+  margin-top:-8px; /* raise the headline a touch without clipping */
+}
+.hero-content p{font-size:1.1rem;margin:0 auto 28px;max-width:720px;opacity:.98}
+
+/* ===== Rotating words (no clipping, crossfade only) ===== */
+.rotate-words{
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  overflow: visible;          /* allow full glyphs to render */
+}
+.rotate-words b{
+  position: absolute;
+  top: 0; left: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .35s ease;
+  color: #fff;
+}
+.rotate-words b.show{ opacity: 1; }
+
+/* ===== Buttons ===== */
+.btn{
+  background:var(--accent);color:var(--text);
+  padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:700;
+  box-shadow:var(--shadow);transition:.25s ease
+}
+.btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-secondary{
+  background:var(--primary);color:#fff;padding:10px 22px;border-radius:8px;
+  text-decoration:none;font-weight:600;transition:.25s ease;display:inline-block
+}
+.btn-secondary:hover{background:var(--primary-dark);transform:translateY(-2px)}
+
+/* ===== Stats ===== */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  max-width:1100px;margin:40px auto 0;padding:20px
+}
+.stat{background:var(--surface);border-radius:12px;box-shadow:var(--shadow);padding:24px;text-align:center}
+.stat-number{font-size:2rem;font-weight:800;color:var(--primary)}
+.stat-label{opacity:.8;margin-top:6px}
+
+/* ===== Intro ===== */
+.intro{
+  padding:70px 20px;text-align:center;background:var(--surface);
+  border-radius:14px;max-width:1100px;margin:40px auto;box-shadow:var(--shadow)
+}
+.intro h2{font-size:2rem;color:var(--primary);margin-bottom:14px}
+.intro p{max-width:850px;margin:0 auto 22px;font-size:1.05rem}
+
+/* ===== Features ===== */
+.features{
+  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+  background:var(--soft);padding:60px 20px;text-align:center
+}
+.feature{
+  width:300px;background:var(--surface);border-radius:14px;
+  padding:24px;box-shadow:var(--shadow);transition:transform .25s ease
+}
+.feature:hover{transform:translateY(-6px)}
+.feature h3{color:var(--primary);margin-bottom:8px;font-size:1.1rem}
+
+/* Center buttons inside feature cards */
+.features .feature .btn,
+.features .feature .btn-secondary{
+  display:inline-block;
+  margin:12px auto 0;   /* centers horizontally */
+}
+
+/* ===== Testimonials Slider ===== */
+.testimonials{padding:60px 20px;max-width:1000px;margin:0 auto}
+.slider{position:relative;overflow:hidden;border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.slides{display:flex;transition:transform .4s ease}
+.slide{min-width:100%;padding:34px;text-align:center}
+.slide blockquote{font-size:1.15rem;line-height:1.7;color:#111}
+.slide figcaption{margin-top:10px;color:#555}
+.slider-btn{
+  position:absolute;top:50%;transform:translateY(-50%);border:0;background:var(--primary);
+  color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:var(--shadow)
+}
+.slider-btn:hover{background:var(--primary-dark)}
+.slider-btn.prev{left:12px}
+.slider-btn.next{right:12px}
+
+/* ===== Floating CTA ===== */
+.floating-cta{
+  position:fixed;right:16px;bottom:16px;background:var(--accent);color:#111;
+  padding:12px 16px;border-radius:999px;text-decoration:none;font-weight:700;
+  box-shadow:var(--shadow);transition:.25s ease;z-index:60
+}
+.floating-cta:hover{background:var(--accent-dark);transform:translateY(-2px)}
+
+/* ===== Footer ===== */
+footer{text-align:center;padding:24px;background:var(--primary);color:#fff;margin-top:42px;font-size:.95rem}
+
+/* ===== Reveal on scroll ===== */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease, transform .5s ease}
+.reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width: 768px){
+  .hamburger{display:block}
+  .nav-links{position:absolute;inset:64px 12px auto 12px;background:var(--primary);border-radius:12px;
+    padding:14px;display:none;flex-direction:column;gap:10px}
+  .nav-links.open{display:flex}
+  .navbar{padding:12px 16px}
+  .hero-content h1.hero-title{font-size:2.1rem}
+  .stats{grid-template-columns:1fr}
+  .feature{width:100%;max-width:360px}
+  .slides{will-change:transform}
+}
+
+/* Fix button overlap in How It Works section (legacy – harmless if unused) */
+.how-it-works .btn {
+  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+.how-it-works {
+  position: relative;
+  padding-bottom: 60px;
+}

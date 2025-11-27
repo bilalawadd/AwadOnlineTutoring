@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awad Online Tutoring | Home</title>
+  <link rel="stylesheet" href="style.css?v=fix5" />
+</head>
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <header class="header" id="top">
+    <nav class="navbar">
+      <div class="logo">Awad Online Tutoring</div>
+
+      <button class="hamburger" aria-label="Open Menu" aria-expanded="false" aria-controls="nav-list">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Awad</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="pricing.html">Pricing & Plans</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== Hero (animated headline) ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">
+        Unlock Your Learning Potential in
+        <span class="rotate-words" aria-live="polite">
+          <b>Electrical Engineering</b>
+		  <b>Math</b>
+		  <b>Electronics Engineering</b>
+		  <b>Physics</b>
+		  <b>Control Automation</b>
+          <b>Programming</b>
+        </span>
+      </h1>
+      <p>Personalized one-on-one online tutoring structured lessons, clear explanations, and real progress.</p>
+      <a href="contact.html" class="btn">Book Your First Lesson</a>
+    </div>
+  </section>
+
+  <!-- ===== Trust Stats (count-up) ===== -->
+  <section class="stats reveal">
+    <div class="stat">
+      <div class="stat-number" data-target="10">0</div>
+      <div class="stat-label">Years Teaching</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-target="100">0</div>
+      <div class="stat-label">Students Coached</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-target="98">0</div>
+      <div class="stat-label">% Exam Success</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" data-target="4.9">0</div>
+      <div class="stat-label">Avg Rating / 5</div>
+    </div>
+  </section>
+
+  <!-- ===== Intro (card) ===== -->
+  <section class="intro reveal">
+    <h2>Welcome to Awad Online Tutoring</h2>
+    <p>
+      Get clarity fast. Each session focuses on <strong>concept mastery</strong>, <strong>problem-solving</strong>, and
+      <strong>exam strategies</strong> so you improve with every lesson.
+    </p>
+    <a href="about.html" class="btn-secondary">Learn More About Awad</a>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="features reveal">
+    <div class="feature">
+      <h3>📚 Expert Guidance</h3>
+      <p>Strong foundations and advanced university level teaching in Math, Physics, Electronics, Circuits, and Programming.</p>
+    </div>
+    <div class="feature">
+      <h3>💻 Flexible Sessions</h3>
+      <p>Zoom/Meet, screen share, whiteboard, and shared notes optimized for online learning.</p>
+    </div>
+    <div class="feature">
+      <h3>🎯 Personalized Plans</h3>
+      <p>Diagnostics → roadmap → measurable milestones tailored to your goals.</p>
+    </div>
+  </section>
+
+  <!-- ===== Testimonials Slider ===== -->
+  <section class="testimonials reveal" aria-label="Student testimonials">
+    <div class="slider">
+      <div class="slides">
+        <figure class="slide">
+          <blockquote>“Circuits finally made sense. After weeks of confusion, I now solve problems confidently.”</blockquote>
+          <figcaption>— Nasser, Electrical Engineering Student</figcaption>
+        </figure>
+        <figure class="slide">
+          <blockquote>“I used to hate Calculus. Now I’m actually enjoying solving integrals and series.”</blockquote>
+          <figcaption>— Reem, University Freshman</figcaption>
+        </figure>
+        <figure class="slide">
+          <blockquote>“His explanations in digital and analog electronics are on another level. Labs and theory became easy.”</blockquote>
+          <figcaption>— Dana, Engineering Student</figcaption>
+        </figure>
+        <figure class="slide">
+          <blockquote>“From zero knowledge to writing working C and Python code. His approach builds confidence step-by-step.”</blockquote>
+          <figcaption>— Abdallah, Programming Beginner</figcaption>
+        </figure>
+      </div>
+      <button class="slider-btn prev" aria-label="Previous testimonial">‹</button>
+      <button class="slider-btn next" aria-label="Next testimonial">›</button>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 Awad Online Tutoring. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating CTA -->
+  <a href="contact.html" class="floating-cta" aria-label="Book a Lesson">Book</a>
+
+  <!-- ===== Minimal JS for interactivity ===== -->
+  <script>
+    // Mobile menu toggle
+    const burger = document.querySelector('.hamburger');
+    const nav = document.getElementById('nav-list');
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+
+    // Shrink header on scroll
+    const header = document.querySelector('.header');
+    const onScrollHeader = () => {
+      if (window.scrollY > 10) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader);
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Count-up stats when visible
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+    const countObserver = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const isFloat = !Number.isInteger(target);
+        let start = 0, startTime = null, duration = 1200;
+        const step = ts => {
+          if (!startTime) startTime = ts;
+          const p = Math.min((ts - startTime) / duration, 1);
+          const value = start + (target - start) * easeOut(p);
+          el.textContent = isFloat ? value.toFixed(1) : Math.floor(value);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        obs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-number').forEach(el => countObserver.observe(el));
+
+    // Testimonials slider
+    const slides = document.querySelector('.slides');
+    const slideEls = document.querySelectorAll('.slide');
+    let idx = 0;
+    const show = (i) => {
+      idx = (i + slideEls.length) % slideEls.length;
+      slides.style.transform = `translateX(-${idx * 100}%)`;
+    };
+    document.querySelector('.next').addEventListener('click', () => show(idx + 1));
+    document.querySelector('.prev').addEventListener('click', () => show(idx - 1));
+    setInterval(() => show(idx + 1), 6000);
+
+    // ===== Rotate words in hero (stable sizing + fade-only, no clipping) =====
+    (function () {
+      const rotator = document.querySelector('.rotate-words');
+      if (!rotator) return;
+      const words = Array.from(rotator.querySelectorAll('b'));
+      if (words.length === 0) return;
+
+      // 1) Show naturally to measure largest size
+      words.forEach(w => {
+        w.style.position = 'static';
+        w.style.opacity = '1';
+        w.style.display = 'inline';
+      });
+
+      // 2) After paint, lock container size, stack absolutely, fade only
+      requestAnimationFrame(() => {
+        const maxW = Math.max(...words.map(w => w.offsetWidth));
+        const maxH = Math.max(...words.map(w => w.offsetHeight));
+        rotator.style.width  = maxW + 'px';
+        rotator.style.height = maxH + 'px';
+        rotator.style.overflow = 'visible';
+
+        words.forEach((w, i) => {
+          w.style.position = 'absolute';
+          w.style.left = '0';
+          w.style.top = '0';
+          w.style.display = 'block';
+          w.style.opacity = i === 0 ? '1' : '0';
+          w.classList.toggle('show', i === 0);
+        });
+
+        let i = 0;
+        setInterval(() => {
+          words[i].classList.remove('show');
+          words[i].style.opacity = '0';
+          i = (i + 1) % words.length;
+          words[i].classList.add('show');
+          words[i].style.opacity = '1';
+        }, 2000);
+      });
+    })();
+  </script>
+</body>
+</html>
