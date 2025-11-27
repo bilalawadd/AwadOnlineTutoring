@@ -32,11 +32,13 @@
   <header class="header" id="top">
     <nav class="navbar">
       <div class="logo">Awad Online Tutoring</div>
-            <!-- Mobile hamburger -->
+
+      <!-- Mobile hamburger -->
       <button class="hamburger" aria-label="Open Menu" aria-expanded="false" aria-controls="nav-list">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-links">
+
+      <ul class="nav-links" id="nav-list">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./about.html">About Awad</a></li>
         <li><a href="./subjects.html">Subjects</a></li>
@@ -197,7 +199,8 @@
       });
     })();
   </script>
-    <!-- ===== Mobile menu + header behavior ===== -->
+
+  <!-- Mobile menu + header behavior -->
   <script>
     // Mobile menu toggle
     const burger = document.querySelector('.hamburger');
@@ -221,6 +224,6 @@
     onScrollHeader();
     window.addEventListener('scroll', onScrollHeader);
   </script>
+
 </body>
 </html>
-
