@@ -12,6 +12,12 @@
   <header class="header" id="top">
     <nav class="navbar">
       <div class="logo">Awad Online Tutoring</div>
+      
+            <!-- Mobile hamburger -->
+      <button class="hamburger" aria-label="Open Menu" aria-expanded="false" aria-controls="nav-list">
+        <span></span><span></span><span></span>
+      </button>
+      
       <ul class="nav-links" id="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Awad</a></li>
@@ -77,6 +83,33 @@
     <p>© 2025 Awad Online Tutoring. All rights reserved.</p>
   </footer>
 
+    <!-- ===== Mobile menu + header behavior ===== -->
+  <script>
+    // Mobile menu toggle
+    const burger = document.querySelector('.hamburger');
+    const nav = document.getElementById('nav-list');
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        const expanded = burger.getAttribute('aria-expanded') === 'true';
+        burger.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+        burger.classList.toggle('open');
+      });
+    }
+
+    // Shrink header on scroll
+    const header = document.querySelector('.header');
+    const onScrollHeader = () => {
+      if (!header) return;
+      if (window.scrollY > 10) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    };
+    onScrollHeader();
+    window.addEventListener('scroll', onScrollHeader);
+  </script>
+
+  
 </body>
 </html>
+
 
