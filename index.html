@@ -191,32 +191,38 @@
     document.querySelector('.prev').addEventListener('click', () => show(idx - 1));
     setInterval(() => show(idx + 1), 6000);
 
-    // ===== Rotate words in hero (stable sizing + fade-only, no clipping) =====
+    // ===== Rotate words in hero (centered, stable sizing, fade-only) =====
     (function () {
       const rotator = document.querySelector('.rotate-words');
       if (!rotator) return;
       const words = Array.from(rotator.querySelectorAll('b'));
-      if (words.length === 0) return;
+      if (!words.length) return;
 
       // 1) Show naturally to measure largest size
       words.forEach(w => {
         w.style.position = 'static';
         w.style.opacity = '1';
         w.style.display = 'inline';
+        w.style.transform = 'none';
       });
 
-      // 2) After paint, lock container size, stack absolutely, fade only
+      // 2) After paint, fix container size and center all words inside it
       requestAnimationFrame(() => {
         const maxW = Math.max(...words.map(w => w.offsetWidth));
         const maxH = Math.max(...words.map(w => w.offsetHeight));
+
         rotator.style.width  = maxW + 'px';
         rotator.style.height = maxH + 'px';
         rotator.style.overflow = 'visible';
+        rotator.style.display = 'inline-block';
+        rotator.style.position = 'relative';
+        rotator.style.textAlign = 'center';
 
         words.forEach((w, i) => {
           w.style.position = 'absolute';
-          w.style.left = '0';
+          w.style.left = '50%';
           w.style.top = '0';
+          w.style.transform = 'translateX(-50%)'; // center horizontally
           w.style.display = 'block';
           w.style.opacity = i === 0 ? '1' : '0';
           w.classList.toggle('show', i === 0);
@@ -232,6 +238,7 @@
         }, 2000);
       });
     })();
+
   </script>
 </body>
 </html>
