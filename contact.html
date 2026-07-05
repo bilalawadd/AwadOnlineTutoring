@@ -32,16 +32,11 @@
   <header class="header" id="top">
     <nav class="navbar">
       <div class="logo">Awad Online Tutoring</div>
-
-      <!-- Mobile hamburger -->
-      <button class="hamburger" aria-label="Open Menu" aria-expanded="false" aria-controls="nav-list">
-        <span></span><span></span><span></span>
-      </button>
-
-      <ul class="nav-links" id="nav-list">
+      <ul class="nav-links">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./about.html">About Awad</a></li>
         <li><a href="./subjects.html">Subjects</a></li>
+		<li><a href="./canada-schooling.html">Canada System</a></li>
         <li><a href="./how-it-works.html">How It Works</a></li>
         <li><a href="./pricing.html">Pricing & Plans</a></li>
         <li><a href="./contact.html" class="active">Contact</a></li>
@@ -126,6 +121,7 @@
         <div class="info-item">
           <b>Phone Numbers</b>
           <div class="muted" style="line-height:1.6;">
+		    <strong>Canada:</strong> +1 873 657 3026<br>
             <strong>Italy:</strong> +39 344 479 5617<br>
             <strong>Lebanon:</strong> +961 81 663 425
           </div>
@@ -199,31 +195,5 @@
       });
     })();
   </script>
-
-  <!-- Mobile menu + header behavior -->
-  <script>
-    // Mobile menu toggle
-    const burger = document.querySelector('.hamburger');
-    const nav = document.getElementById('nav-list');
-    if (burger && nav) {
-      burger.addEventListener('click', () => {
-        const expanded = burger.getAttribute('aria-expanded') === 'true';
-        burger.setAttribute('aria-expanded', String(!expanded));
-        nav.classList.toggle('open');
-        burger.classList.toggle('open');
-      });
-    }
-
-    // Shrink header on scroll
-    const header = document.querySelector('.header');
-    const onScrollHeader = () => {
-      if (!header) return;
-      if (window.scrollY > 10) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    };
-    onScrollHeader();
-    window.addEventListener('scroll', onScrollHeader);
-  </script>
-
 </body>
 </html>
